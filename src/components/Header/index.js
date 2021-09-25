@@ -6,13 +6,14 @@ const Header = ({username}) => {
     useEffect(() => {
         axios(`https://api.github.com/users/${username}`)
             .then(({data}) => setUser(data))
-    }, [username])
+    }, [username, user])
+    console.log(user)
     return (
-        <header>
-            <div className="container d-flex justify-content-space-between align-items-center">
+        <header className="header py-3">
+            <div className="container d-flex justify-content-between align-items-center">
                 <div className="user">
-                    <img src="" alt=""/>
-                    <p className="username">{user.name}</p>
+                    <img src={user.avatar_url} alt={user.name} />
+                    <p className="username">{user.login}</p>
                 </div>
                 <input type="text"/>
             </div>
