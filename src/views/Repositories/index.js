@@ -12,31 +12,33 @@ const Repositories = () => {
     }, [username])
     return (
         <Layout username={username}>
+            {
+                projects.length === 0 ? <p className="text-center text-danger">{username} doesn't have any public repositories yet.</p> :
+                    <table className="table table-striped">
+                        <thead className="table-secondary">
+                        <tr>
+                            <th scope="col">№</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Created At</th>
+                            <th scope="col">Language</th>
+                            <th scope="col">README.md</th>
+                        </tr>
+                        </thead>
 
-            <table className="table table-striped">
-                <thead className="table-secondary">
-                <tr>
-                    <th scope="col">№</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Created At</th>
-                    <th scope="col">Language</th>
-                    <th scope="col">README.md</th>
-                </tr>
-                </thead>
+                        <tbody>
+                        {projects.map((el, idx) =>
+                            <tr key={el.id}>
+                                <th scope="row">{idx + 1}</th>
+                                <td>{el.name}</td>
+                                <td>{el.created_at?.slice(0, 10).split("-").join(".")}</td>
+                                <td>{el.language === null? "-" : el.language}</td>
+                                <td className="readme"><Link className="readme-link" to={`/${username}/${el.name}`}>README.md</Link></td>
+                            </tr>
+                        )}
 
-                <tbody>
-                {projects.map((el, idx) =>
-                    <tr key={el.id}>
-                        <th scope="row">{idx + 1}</th>
-                        <td>{el.name}</td>
-                        <td>{el.created_at?.slice(0, 10).split("-").join(".")}</td>
-                        <td>{el.language === null? "-" : el.language}</td>
-                        <td className="readme"><Link className="readme-link" to={`/${username}/${el.name}`}>README.md</Link></td>
-                    </tr>
-                )}
-
-                </tbody>
-            </table>
+                        </tbody>
+                    </table>
+            }
         </Layout>
     );
 };
