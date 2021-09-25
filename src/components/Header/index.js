@@ -9,13 +9,13 @@ const Header = ({username}) => {
     }, [username, user])
     console.log(user)
     return (
-        <header className="header py-3">
+        <header className="header py-2">
             <div className="container d-flex justify-content-between align-items-center">
                 <div className="user">
                     <img src={user.avatar_url} alt={user.name} />
                     <p className="username">{user.login}</p>
                 </div>
-                <input type="text"/>
+                <input type="text" className="form-control w-25"/>
             </div>
         </header>
     );

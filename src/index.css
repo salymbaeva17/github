@@ -61,6 +61,12 @@ img {
 #root {
     min-width: 100vw;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+.main{
+    flex: 1;
 }
 
 #root .homepage {
@@ -86,7 +92,7 @@ img {
     margin: 0;
 }
 
-.readme a {
+.readme-link {
     color: rgb(12, 62, 45);
     text-decoration: none;
     background: rgb(203, 249, 225);
@@ -96,6 +102,37 @@ img {
     font-weight: 600;
     transition: .6s;
 }
-.readme a:hover{
+.readme-link:hover{
     background:rgb(130, 255, 190);
+}
+.header{
+    background-color: #daffe9;
+}
+.username{
+    line-height: 1.25 !important;
+    font-weight: 600;
+}
+.social-media{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.social-media span{
+    line-height: 1;
+}
+.sm-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.bx{
+    font-size: 20px;
+    color: #229b52;
+}
+.footer{
+    background-color: #daffe9;
+    font-weight: 400;
+    color: #19713c;
 }

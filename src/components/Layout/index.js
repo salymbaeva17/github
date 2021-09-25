@@ -1,13 +1,17 @@
 import React from 'react';
 import Header from "../Header";
+import Footer from "../Footer";
 
 const Layout = ({children, username}) => {
     return (
         <>
             <Header username={username} />
-            <div className="container my-4">
+            <main className="main">
+                <div className="container my-4">
                 {children}
-            </div>
+                </div>
+            </main>
+            <Footer />
         </>
     );
 };

@@ -15,7 +15,10 @@ const Readme = () => {
 
     return (
         <Layout username={username}>
-            <Markdown className="readme" >{readme}</Markdown>
+            {
+                readme === "" ? <p className="text-center text-danger">No README.md file</p> :  <Markdown className="readme" >{readme}</Markdown>
+            }
+
         </Layout>
     );
 };
