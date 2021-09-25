@@ -11,11 +11,30 @@ const Repositories = () => {
             .then(({data}) => setProjects(data))
     }, [username])
     return (
-        <Layout>
-            {projects.map(el =>
-                <Link to={`/${username}/${el.name}`}>{el.name}</Link>
-            )
-            }
+        <Layout username={username}>
+
+            <table className="table table-striped">
+                <thead className="table-secondary">
+                <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">README.md</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {projects.map((el, idx) =>
+                    <tr key={el.id}>
+                        <th scope="row">{idx + 1}</th>
+                        <td>{el.name}</td>
+                        <td>{el.created_at?.slice(0, 10).split("-").join(".")}</td>
+                        <td className="readme"><Link to={`/${username}/${el.name}`}>README.md</Link></td>
+                    </tr>
+                )}
+
+                </tbody>
+            </table>
         </Layout>
     );
 };
